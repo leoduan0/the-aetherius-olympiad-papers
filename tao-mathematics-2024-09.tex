@@ -1,6 +1,7 @@
 \documentclass{exam}
 
 \usepackage{tikz}
+\usetikzlibrary{angles}
 \usetikzlibrary{decorations.pathmorphing}
 
 \pagestyle{headandfoot}
@@ -60,6 +61,50 @@
 	}
 	\question[7]{
 	Given a triangle $\triangle KAI$, let $\overline{HK_1}=a$ and $\overline{H_1I}=b$, find $\sum_{n=1}^{\infty} H_nH_{n-1}$.
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (K) at (0,5);
+			\coordinate (H1) at (2.5,2.5);
+			\coordinate (H2) at (2.5,0);
+			\coordinate (H3) at (3.75,1.25);
+			\coordinate (H4) at (3.75,0);
+			\coordinate (H5) at (4.375,0.625);
+			\coordinate (H6) at (4.375,0);
+			\coordinate (I) at (5,0);
+
+			\draw (A) -- (K) -- (I) -- (A);
+			\draw (A) -- (H1) -- (H2) -- (H3) -- (H4);
+			\draw[dotted] (H4) -- (H5) -- (H6);
+
+			\node[below] at (A) {$A(H_0)$};
+			\node[above] at (K) {$K$};
+			\node[above] at (H1) {$H_1$};
+			\node[below] at (H2) {$H_2$};
+			\node[above] at (H3) {$H_3$};
+			\node[below] at (H4) {$H_4$};
+			\node[below] at (I) {$I$};
+
+			\draw (0,0) coordinate (ANGLE0)
+			(1,0) coordinate (ANGLE1) -- (ANGLE0)
+			(0,1) coordinate (ANGLE2) -- (ANGLE0)
+			pic [draw]
+				{right angle = ANGLE1--ANGLE0--ANGLE2};
+
+			\draw (2.5,0) coordinate (ANGLE0)
+			(3.5,0) coordinate (ANGLE1) -- (ANGLE0)
+			(2.5,1) coordinate (ANGLE2) -- (ANGLE0)
+			pic [draw]
+				{right angle = ANGLE1--ANGLE0--ANGLE2};
+
+			\draw (3.75,0) coordinate (ANGLE0)
+			(4.75,0) coordinate (ANGLE1) -- (ANGLE0)
+			(3.75,1) coordinate (ANGLE2) -- (ANGLE0)
+			pic [draw]
+				{right angle = ANGLE1--ANGLE0--ANGLE2};
+		\end{tikzpicture}
+	\end{center}
 	}
 \end{questions}
 
